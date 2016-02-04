@@ -1,0 +1,54 @@
+Do not send response to this text before you read the entire text carefully.
+
+Instructions:
+
+1. You have to send a single file with extension "tar.gz" as attachment. No other extension will be processed further. Name of the attached file should be your roll number. Your roll number is a five digit string. If you do NOT name the file as per this rule, your assignment might be rejected.
+
+2. You have to send an email to "assignments<DOT>pucsd<AT>gmail<DOT>com" with the subject:
+PPSPC16_01_LISTDIR
+
+Note that I am going to filter messages on the basis of the subject text ONLY. So, you should send the email with the exact subject text given above. Even slight change might result in rejection.
+3. Deadline: 14/01/2016 6PM
+
+If you miss the deadline your assignment will be rejected. If you don't know the current time you may use this link [IST] to find the current time.
+
+[IST] http://wwp.greenwichmeantime.com/time-zone/asia/india/time/
+
+The assignment problem text starts here.
+
+Read the "note-about-credit.txt" carefully.
+      http://tinyurl.com/note-about-credit
+Write a set of programs that will accomplish the following -
+
+   program0 - supervisor ::
+            - will launch the programs (program1, program2, program3) on user request 
+            - will keep on running and monitoring the status of the programs program1,
+              program2, program3
+              and if it finds that a program is not running,
+                  then it will start it
+            - will terminate the monitored programs on user request or upon detection of
+              "job finished" condition
+
+   program1 - dirLister :: dirs2process.lst -> new-files-found.lst
+            - list a directory, whose name is found in the file dirs2process.lst,
+              and appends that list to new-files-found.lst
+
+   program2 - filesProcessor :: new-files-found.lst -> (tmp-files-info.lst, files.output)
+              appends the list of directories to a file named tmp-files-info.lst
+              appends the list of non-directory files to a file named files.output
+
+   program3 - dirSelector :: new-files-found.lst -> (dirs2process.lst, dirs.output)
+            - selects directories from the file new-files-found.lst based on the given
+              criteria (depth and symlinks)
+              and
+              appends them to the file named dirs2process.lst 
+              and also to a file named dirs.output
+
+              This program must handle symlinks correctly.
+
+The assignment problem text ends here.
+
+If you have any doubts, you may meet me.
+
+Do not send your assignment by replying to this mail without setting the subject text properly. The subject text to be used for this assignment is:
+ PP16_01_LISTDIR

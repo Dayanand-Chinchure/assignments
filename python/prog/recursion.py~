@@ -1,0 +1,12 @@
+food_item=["Milk","Pills","Dippers"]
+
+f=open('ip','r')
+
+def check_tax(a):
+	print a*a
+
+for line in f:
+	b=line.split()
+	res=check_tax(float(b[len(b)-1]))
+
+

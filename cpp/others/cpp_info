@@ -1,0 +1,136 @@
+cpp information:
+
+1. Basic difference in structure and function is :
+	all variables and functions in strutcure are by defualt public
+	all variables and functions in class are by defualt private
+
+2. Function overloading perform on the paraeters to the function not on the return type.
+eg.	void area(int)
+	void area(int,int,int=0)
+	
+	->Here advantage of function overloading is that if third integer value i not pass to the 
+	  function then by defualt it takes 0/defined by you.
+
+3. Pointers and Reference are same in nature but representation is different.
+eg. 	int x=5
+	int *p=&x;      <- Pointer
+	
+	int &y=x;	<-Reference
+	y++; //incrementing the value of the x
+
+4. Inline Function : inline fun();
+	-> its not a command its request to the compiler.
+	-> compiler only converts the function in one line
+	-> Compiler will ignore the request if:
+		-> function contains loops,switch, goto
+		-> function with recusrion
+		-> cointaining static variable
+
+5. Varibles and functions inside the class are not class varibles or class functions
+eg. 
+	class book{};
+	book b1;
+	
+	-> Object is an instance of class.
+	-> here variables and functions in "book object" are seperate for each and every instance of the 
+	  object. Means all variables and functions are different for each instance.
+	-> Because of this var and functions are "not calles class Vairbles or class functions"
+	  instead they called as "Instance Member variable" and "Instance Member functions"
+	-> as you defines the object book but it does not have any value untill you define 
+	  the instance. And you call object with the instance and instance member functions.
+
+6. Inside the class if you write 
+	int x=10; //it is Instance Member variable
+	static int x=10; // It is Static Member Varible / "Class Variable".
+	
+	-> If you dont create a instance of the object then also static varibales (class variables)
+	  is created rather creating the instance of the object.
+	-> To assign value to the Static variable(class variable) you have to declare it outside of the class		eg. float Account::book_price=3.5;
+	-> if Static variable is public then we can set the data in static variable in main function
+		Account::roi=3.5;
+	   if it is private in nature then write a function in class to set a value ot static variable
+		eg : 
+			class Account
+			{
+				private:
+					static float roi; //class varibale
+				
+				public:
+					static void setvalue(float r) //Static Member Function
+					{
+						roi=r;
+					}
+			};
+
+			main()
+			{
+				Account a1,a2;
+				a1.setvalue(4.5);
+				Account::setvalue(4.5);
+			}
+		As it is global in nature. Any instance of object must not be compulsion to change the value
+		it must be access from outside of the class. only we have to write in Main function and call
+		to the perticular instance member varibale.
+
+7. Constructor : 
+	-> Name is same as class
+	->its a member function of class
+	-> dont have any return type, so cant use the return keyword
+	->It can not be static 
+
+	*** Constructors are mainly used for initialization. When we declare the instance of the object 
+	   then constructor gets called.
+	
+	Why Constructor?
+	--> Constructor makes object as a object. It is duty of constructor to make a object a object.
+		*** Constructor is guareentee functions which will called when you declare the instance.
+			it will do the member variable initialization.
+	
+	When an object gets created then constructor gets called that is called as the "Default Constructor".
+	Compiler created this constructor.
+	
+	We can do constructor overloading in cpp, by declaring the constructor with different parameteres.
+	
+	** Compiler created 2 constructors in as class 
+	1. Default Constructor
+	2. Copy Constructor
+
+	if in your class, create a constructor which in like normal constructor then compiler will not
+	create a default constructor, but will create a copy constructor.
+
+	Destructor called by the cpp compiler by default. if we want to write the destructor then we can you 		~ symbol infront of the constructor with the { //Nothing Inside}
+
+8. Operator Overloading : 
+	when we want to do operation on 2 instances then we use the operator over...
+	eg:
+		Complex operator +(Complex c)
+		{
+			a
+			b
+		}
+		call in main
+
+		main()
+		{
+			c3=c1+c2;                 //Type 1
+			c3=c1.operator+(c2):      //Type 2
+		}
+	** When operator overloaed with multiple jobs then it is known as ope overloading.
+	
+	Polymorphism has 2 types :
+	1. Compile Time : -> 1. Function Overloading
+			  -> 2. Operator Overloading
+	2. Run Time 	: -> Virtual Function 
+
+9. 
+
+
+
+
+
+
+
+
+
+
+

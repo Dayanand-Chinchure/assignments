@@ -1,0 +1,14 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+final_list	function.h	/^char * final_list(char *list)$/;"	f
+getlist	function.h	/^char * getlist(FILE *fp, int *size)$/;"	f
+main	dirLister.c	/^int main()$/;"	f
+main	dirSelector-old.c	/^int main()$/;"	f
+main	dirSelector.c	/^int main()$/;"	f
+main	fileProcessor.c	/^int main()$/;"	f
+main	swan.c	/^int main()$/;"	f
+memory	function.h	/^char * memory()$/;"	f

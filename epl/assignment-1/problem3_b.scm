@@ -1,0 +1,7 @@
+(define (fun lista)
+  (define (check_lista lista)
+    (if (number? (car lista))
+      (check_lista (cdr lista))
+      #f))
+  (check_lista lista)
+  )
