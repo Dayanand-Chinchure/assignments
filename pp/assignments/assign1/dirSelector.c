@@ -9,6 +9,7 @@ int main()
 	while (getline(&path, &len, fp)!=-1)
 	{
 		path[strlen(path)-1]='\0';
+		printf("%s",path);
 		FILE *ptr;
 		char *buf;
 		if((ptr = popen(("find %s -maxdepth 2 2>&1",path),"r")) != NULL) 
