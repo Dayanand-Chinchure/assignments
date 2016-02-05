@@ -18,7 +18,7 @@ void insert(struct node **head, int data)
 	struct node *temp=(struct node *)malloc(sizeof(struct node));
 	struct node *tail;
 	temp->data=data;
-	temp->side=NULL;
+	temp->s->next=NULL;
 	temp->next=NULL;
 
 	if(*head==NULL)
@@ -41,8 +41,8 @@ void do_loop(struct node *head,int *b, int n)
 	{
 		for(i=0;i<3;i++)
 		{
-			temp->side=b[i];
-			temp=temp->side;
+			temp->s->data=b[i];
+			temp=temp->s->next;
 		}
 		temp=temp->next;
 	}
