@@ -116,21 +116,194 @@ eg.
 			c3=c1.operator+(c2):      //Type 2
 		}
 	** When operator overloaed with multiple jobs then it is known as ope overloading.
+	We cant use the "sizeof" and "?:" as a operator overloading.
+	** In Operator Overloading only we have to add a operator keyword in from of the operator
+	so we can use it for add etc. Any valid operator in C can be used in operator overloading.
+	
+	**we can overload Unary and binary opearators 
+	eg. Unary Operator Overloading
+	
+	Complex operator -()
+	{
+		Complex temp;
+		temp.a=-a;
+		temp.b=-b;
+		return temp;
+	}
+	-----------------------------------------------
+	**For Pre and Post increment 
+
+	Complex operator++()       //////For Pre Increment
+	{
+		Complex temp;
+		temp.x=++x;
+		return temp;
+	}
+
+	Only by writting the int int the parameter compiler understabds that it is Post increment
+
+	Complex operator++(int)      /////Post Increment
+	{
+		Complex temp;
+		temp.x=++x;
+		return temp;
+	}
+
+	main()
+	{
+		Complex i1,i2;
+		i2=i1++;
+		i2=++i1;
+	}	
+	
+	--------------------------------------------------
+	
 	
 	Polymorphism has 2 types :
 	1. Compile Time : -> 1. Function Overloading
 			  -> 2. Operator Overloading
 	2. Run Time 	: -> Virtual Function 
 
-9. 
+9. Friend Function
+	
+	It is a function which is of the class but not declared in a class. Its only friend of that class.
+	Declared in class but defined outside. While declaring we have to write friend keyword in the class.
+	
+	Friend function can access any member function of class like member function(function which is 
+	declared in a class).Only thing is that it can not access directly like member function.
+	
+	Friend function can become friend of more than one class(multiple class)
+		
+	There is no such condition to declare friend function in public or private
+	as its not a member function you can declare it in any thing public, private, protected
 
+	** Main advantage of friend function is that it can be used as for 2 classes. This is very
+	important as it can also access the private member variables.
+	
+	** We can use friend function for getting the input from user and printing 
+	
+	** For Cout
 
+	friend ostream& operator<<(ostream&,Complex);
+	
+	ostream& operator<<(ostream &dout,Complex c)
+	{
+		cout<<c.a<<" "<<c.b<<endl;
+		return dout;
+	}
+	
+	cout<<c1;
 
+	** For Cin
+	friend istream& operator>>(istream&,Complex&);
 
+	istream& operator>>(istream &din,Complex &c)
+	{
+		cin>>c.a>>c.b;
+		return din;
+	}
+	
+	cin>>c1;
 
+	*** Member function of one class can become friend function of other class is possible using 
+	friend.
+	
+10.Inheritance:
 
+	When you have a class A and you have another class B and want to use the all properties of
+	class A in class B then we use inheritance
+	eg Class A (Normal car)
+	  Class B (Sports car) //will have all things of normal car also few addition.
 
+	class car
+	{
+	
+	}
 
+	class sports_car:public car
+	{
 
+	}
 
+	*Typed of Inheritance: 
+	
+	1.Single Level
+	2. Multilevel 
+	3. Multiple 
+	4. Hierarchical
+	5. Hybrid
 
+	1. Single Level
+
+	class A    class B:public A
+	{	   {
+	}	   }
+
+	2. Multilevel
+
+	class A     class B:public A   class C:public B
+	{	    {		       {
+	}	    }		       }
+
+	3. Multiple
+
+	class A    class B    class C:public A,public B
+	{          {          {
+	}          }          }
+	
+	4. Hierarchical
+
+	class A   class B1:public A  class B2:public A
+	{	  {                  { 
+	}         }                  }
+
+	5. Hybrid 
+	It is mixer of more than 1 inheritance so called hybrid.
+
+	** Access Specifiers :
+
+	1. Public    - Access to all class and object
+	2. Private   - Only to the class
+	3. Protected - only access to class and "Derived object"
+	
+
+	** Type of user of class:
+
+	User 1. Who create object of your class
+	User 2. Who will "derived" from your class
+
+	** If there is any relation in 2 entities then called as Association
+	
+	eg. Banana is a fruit
+
+	** Association  Types:
+
+	1. Aggregation
+	2. Composition
+	3. Inheritance
+
+11. Other points
+
+	new and delete are used as the malloc and free
+
+12. Function Overriding and Hiding
+
+	** Overriding
+	eg. Method Overriding and Hiding
+	class A
+	{
+		public: void fun(){}
+			void fun2(){}
+	}
+	
+	class B:public A
+	{
+		public: void fun(){}   //Methof Oerriding
+	}		void fun2(int x){} //Method Hiding
+	
+	if call is from class B object, abd that function not found in the class B then it search in
+	the class A. If present then it will not search.
+
+	Function Overloading is different from the overridding.
+	Function overriding occures in the inheritance while overloading occures if, we have defined 
+	same functions in the same class. Not in different class.
