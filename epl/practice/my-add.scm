@@ -1,5 +1,4 @@
-(define null '())
 (define check
   (lambda (lst)
-    (if (eq? lst null) lst
-      (+ (car lst) (check (cdr lst)))))) 
+    (if (eq? (cdr (lst)) '()) lst
+      (+ apply (car lst) (check (cdr lst)))))) 
