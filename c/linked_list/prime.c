@@ -3,9 +3,8 @@
  
 int main()
 {
-	int n=21,c;
+	int n=50000,c;
 	int b=(int)sqrt(500000000);
-	printf("%d ",b);
 	for(c=2;c<=n-1;)
 	{
 		if(n%c==0)
