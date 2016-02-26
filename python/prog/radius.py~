@@ -1,8 +1,0 @@
-r=int(raw_input())
-d=r*r
-cir=3.14*2*r
-area=3.14*d
-print "Diame "+ "d"
-print "Circu "+"cir"
-print "Area " + "area"
-
