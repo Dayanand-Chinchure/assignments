@@ -28,7 +28,17 @@
 
 ;2
 
+(define (split ls)
+(if (or (null? ls) (null? (cdr ls)))
+(list ls '())
+(let ((next (split (cddr ls))))
+(list (cons (car ls) (car next))
+(cons (cadr ls) (cadr next))))))
 
+(define split-list
+(lambda (lst)
+(if (null? lst) '()
+(append (list (caar lst)) (cons (cadr lst) (split-list (cdr lst)))))))
 
 ;-------------------------------------------------------------------------
 
@@ -42,6 +52,6 @@
 (lambda (lst)
 (if (null? lst) '()
 (if (eq? (car lst) 'let) (append (get-list (cdr lst)) (desugar-let (cdr lst)))
-(desugar-let (cdr lst)))))) 
+(desugar-let (cdr lst))))))
 
 
