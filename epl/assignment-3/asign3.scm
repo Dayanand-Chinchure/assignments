@@ -29,7 +29,7 @@
 (define split-two-list
 (lambda (lst)
 (if (null? lst) '()
-(cons (caar lst) (split-two-list (cdr lst) )))))
+(cons (caar lst) (append (split-two-list (cdr lst)) (list (cdar lst)))))))
 ;-------------------------------------------------------------------------
 
 ;3 desugar let procedure
@@ -64,13 +64,9 @@
 ;-------------------------------------------------------------------------
 ;1. Substitute the old lits with new list in resultant lits
 
-(define substitute
-  (lambda (lst old new)
-    (if (null? lst) '()
-      (if (eq? (car lst) old) (cons new (substitute (cdr lst) old new))
-        (cons old (substitute ((cdr lst) old new)))
-        ))))
-
+(define substitute 
+(lambda (lst old new)
+(if (null? lst) '()
 
 ;-------------------------------------------------------------------------
 ;5. Path from root
