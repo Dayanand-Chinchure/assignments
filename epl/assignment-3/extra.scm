@@ -1,3 +1,7 @@
+(define env
+(lambda ()
+(let ((a 1)) ((b 2)))))
+
 (define la-pos
   (lambda (symbol depth pos)
     (cond
@@ -20,6 +24,12 @@
      ((eq? 'lambda (car lst)) 
       (list 'lambda 
 	    (cadr lst) 
-	    (lexical-address (caddr lst) 
-			     (cons (cadr lst)))))
-     (else (la-list lst)))))
+	    (lexical-address (caddr lst)
+			     (cons (cadr lst))))
+     (else (la-list lst))))))
+
+(define-datatype expression expression?
+		 (var-exp (id symbol?))
+		 (lambda-exp (id symbol?) (body expression?))
+		 (app-exp (rator expression?) (rand expression?))
+		 )

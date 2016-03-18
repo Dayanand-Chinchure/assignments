@@ -76,4 +76,3 @@
 (cond (
 (if (< (car lst) n) (cons 'right (path n (caddr lst)))
 (cons 'left (path n (cadr lst)))))))))
-
