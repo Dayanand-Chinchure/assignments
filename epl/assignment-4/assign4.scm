@@ -1,14 +1,3 @@
-(define-datatype expression expression? 
-  (var-exp
-    (id symbol?))
-  (lambda-exp
-    (id symbol?)
-    (body expression?))
-  (app-exp
-    (rator expression?)
-    (rand expression?)))
-
-
 (define parse-expression
   (lambda (datum)
     (cond

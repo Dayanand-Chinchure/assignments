@@ -1,39 +1,42 @@
-(define create-queue
-  (lambda ()
-    (let ((q-in '())
-          (q-out '()))
-      (letrec 
-        ((reset-queue
-           (lambda ()
-             (set! q-in '())
-             (set! q-out '())))
-         (empty-queue?
-           (lambda ()
-             (and (null? q-in)
-                  (null? q-out))))
-         (enqueue
-           (lambda (x)
-             (set! q-in (cons x q-in))))
-         (dequeue
-           (lambda ()
-             (if (empty-queue?)
-               (eopl:error 'dequeue
-                 "Not on an empty queue")
-               (begin
-                 (if (null? q-out)
-                   (begin
-                     (set! q-out (reverse q-in))
-                     (set! q-in '())))
-                   (let ((ans (car q-out)))
-                     (set! q-out (cdr q-out))
-                     ans))))))
-        (vector reset-queue empty-queue? enqueue dequeue)))))
+;;#######Implimenting Queue#########
+(define (make-queue)
+ (define p (cons '() '() ) )
+ (cons p p)
+)
+;Checks whether a queue is empty
+(define (null-queue? q)
+ (and (eq? (front q) (rear q)) (eq? (car (front q)) '() ))
+)
 
-(define queue-get-reset-operation   
-  (lambda (q) (vector-ref q 0)))
-(define queue-get-empty?-operation  
-  (lambda (q) (vector-ref q 1)))
-(define queue-get-enqueue-operation 
-  (lambda (q) (vector-ref q 2)))
-(define queue-get-dequeue-operation 
-  (lambda (q) (vector-ref q 3)))
+(define (front q)
+ (car q)
+)
+
+(define (rear q)
+ (cdr q)
+)
+
+(define (push q e)
+ (define p (cons e '()))
+ (if (null-queue? q)
+  (begin (set-car! q p)
+   (set-cdr! q p)
+  )
+  (begin
+   (set-cdr! (rear q) p)
+   (set-cdr! q p))))
+
+(define (pop q)
+ (define x 0)
+ (if (null-queue? q)
+  'Empty
+  (if (and (eq? (front q) (rear q))  (eq? '() (cdr (front q)))   )
+   (begin
+    (set! x (car (front q)))
+    (set-car! (front q) '() )
+    x
+   ) 
+   (begin
+    (set! x (car (front q)))
+    (set-car! q (cdr (front q)) )
+   x))))
