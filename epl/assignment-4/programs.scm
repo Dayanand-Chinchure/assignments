@@ -104,8 +104,8 @@
 
        ;; application
        (else                                    (append (list 'application)
-                                                        (list (return-parse-tree (car expression))
-                                                              (return-parse-tree (cadr expression)))))))))
+                                                        (list (return-parse-tree (cadr expression))
+                                                              (return-parse-tree (caddr expression)))))))))
 
 
 (define elem? 
@@ -113,17 +113,18 @@
     (if (null? lst)
       (if (eq? a (car lst)) #t (elem? a (cdr lst))))))
   
-(define ll '(abs (var-exp x) (abs (var-exp y) (num-op + (var-exp x) (var-exp y)))))
-
+(define ll '(abs (var-exp x) (abs (var-exp y) (num-op + (var-exp z) (var-exp y)))))
+(define env '((x 1) (y 2) (z 3) (e 2)))
 (define check-free 
   (lambda (var lst)    
      (cond
-       				((eq? (car lst) 'var-exp) (eq? var (cadr lst))) 
+       				((eq? (car lst) 'var-exp) (eq? var (cadr lst)))
 				((eq? (car lst) 'abs) (and (not (eq? var (cadadr lst))) (check-free var (caddr lst))))
-				((eq? (car lst) 'num-op) (or (check-free var (cadr lst)) (check-free var (caddr lst))
+				((eq? (car lst) 'num-op) (and (check-free var (caddr lst)) (check-free var (caddr lst))
 	)) 
 				(else (or (check-free var (cadr lst)) (check-free var (caddr lst))))     
        )))
+
 
 (define parse
   (lambda (expression)
@@ -131,5 +132,13 @@
       (return-parse-tree (convert-to-curried-form expression))
       #f)))
 
+(define list-free
+  (lambda (lst env)
+    (if (null? env) env
+      (if (check-free (caar env) lst) (cons (car env) (list-free lst (cdr env))) (list-free lst (cdr env))))))
 
-
+(define lookup
+  (let ((free (list-free ll env)))
+     (lambda (ll)
+      (if (null? ll) ll
+	(if (eq? (caar free) (cdr ll)) (cons (cadar free) (lookup (cddr ll))) (cons (car ll) (lookup (cdr ll))))))))
