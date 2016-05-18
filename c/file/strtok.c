@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  demo.c
+ *       Filename:  strtok.c
  *
- *    Description:  
+ *    Description:  Learn strtok
  *
  *        Version:  1.0
- *        Created:  03/05/2016 08:16:38 PM
+ *        Created:  04/26/2016 10:01:01 AM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,6 +15,13 @@
  *
  * =====================================================================================
  */
+#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-void main(void) {}
+
+int main(void)
+{
+
+	return 0;
+}
