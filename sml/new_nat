@@ -1,0 +1,9 @@
+theory new_nat
+import Main
+begin
+
+hide_type nat
+
+datatype nat = Zero | Succ nat
+
+v

@@ -1,0 +1,5 @@
+ctype list.t
+      where
+      cons : t -> list.t -> list.t
+      emp  : list.t
+
