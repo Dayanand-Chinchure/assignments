@@ -38,7 +38,7 @@ void display(struct node *head)
 int main()
 {
 	struct node *head=NULL;
-	
+	//just a test line
 	void (*my_insert)(struct node **,int)=insert;
 
 	(*my_insert)(&head,1);
