@@ -6,6 +6,10 @@ struct node
 	struct node *next;
 };
 
+void add()
+{
+}
+
 void insert(struct node **head,int data)
 {
 	struct node *temp=(struct node *)malloc(sizeof(struct node));

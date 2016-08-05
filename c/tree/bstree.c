@@ -25,18 +25,40 @@ int height(struct node *root)
 		return right+1;
 }
 
+int findmax(struct node *root)
+{
+	int root_val,left,right,max=0;
+	
+	if(root!=NULL)
+	{
+		root_val=root->data;
+		left=findmax(root->left);
+		right=findmax(root->right);
+		
+		if(left>right)
+			max=left;
+		else
+			max=right;
+		
+		if(root_val > max)
+			max=root_val;
+	}
+	return max;
+}
+
 
 int main()
 {
 	struct node *root=NULL;
-	int a[]={9,3,10,5,12,7,99,9,10};
+	int a[]={9,3,10,5,12,71,9,9,10};
 	int i,n=sizeof(a)/sizeof(int);
 	
 	for(i=0;i<n;i++)
 		insert(&root,a[i]);
-	/*display(root);*/
+	display(root);
 	int ht=height(root);
-	printf("%d \n",ht);
+	int max=findmax(root);
+	printf("\n%d ,%d\n",ht,max);
 	return 0;
 }
 
